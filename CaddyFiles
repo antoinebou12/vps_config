@@ -1,0 +1,49 @@
+{
+        log {
+                output file /home/antoine/caddy/access.log {
+                        roll_size 10mb
+                        roll_keep 5
+                        roll_keep_for 168h
+                }
+        }
+        email antoine.bou13@gmail.com
+}
+
+cv.bruhland.com {
+        root * CV/public
+        file_server
+        reverse_proxy {{ server ip }:8080
+}
+
+status.bruhland.com {
+        reverse_proxy {{ server ip }:3001
+}
+
+localfile.bruhland.com {
+        root * files
+        file_server browse
+}
+
+media.bruhland.com {
+        reverse_proxy {{ personal ip }}:8096
+}
+
+sonarr.bruhland.com {
+        reverse_proxy {{ personal ip }:8989
+}
+
+radarr.bruhland.com {
+        reverse_proxy {{ personal ip }:7878
+}
+
+searcht.bruhland.com {
+        reverse_proxy {{ personal ip }:5076
+}
+
+ombi.bruhland.com {
+        reverse_proxy 10.1.0.2:3579
+}
+
+sftp.bruhland.com {
+        reverse_proxy 10.1.0.2:8334
+}
