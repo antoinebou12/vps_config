@@ -6,22 +6,22 @@
                         roll_keep_for 168h
                 }
         }
-        email antoine.bou13@gmail.com
+        email {{ email }}
 }
 
-cv.bruhland.com {
-        root * CV/public
+localfile.bruhland.com {
+        root * files
+        file_server browse
+}
+
+blog.bruhland.com {
+        root * hugo/public
         file_server
         reverse_proxy {{ server ip }:8080
 }
 
 status.bruhland.com {
         reverse_proxy {{ server ip }:3001
-}
-
-localfile.bruhland.com {
-        root * files
-        file_server browse
 }
 
 media.bruhland.com {
@@ -38,12 +38,4 @@ radarr.bruhland.com {
 
 searcht.bruhland.com {
         reverse_proxy {{ personal ip }:5076
-}
-
-ombi.bruhland.com {
-        reverse_proxy 10.1.0.2:3579
-}
-
-sftp.bruhland.com {
-        reverse_proxy 10.1.0.2:8334
 }
