@@ -1,0 +1,16 @@
+---
+# tasks file for common
+- name: Requirements are installed
+  become: yes
+  apt:
+    name:
+        - debian-keyring
+        - debian-archive-keyring
+        - apt-transport-https
+        - python3-requests
+        - python3
+        - curl
+        - wget
+        - vim
+        - nmap
+    update_cache: yes

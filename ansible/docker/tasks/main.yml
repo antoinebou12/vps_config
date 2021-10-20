@@ -1,0 +1,36 @@
+---
+# tasks file for docker
+- name: Requirements are installed
+  become: yes
+  apt:
+    name:
+        - debian-keyring
+        - debian-archive-keyring
+        - apt-transport-https
+        - python3-requests
+        - python3
+        - curl
+        - python3-pip
+    update_cache: yes
+
+- name: Install Docker
+  become: yes
+  vars:
+    pip_install_packages:
+      - name: docker
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+
+- name: Install Docker Compose
+  become: yes
+  shell: pip install docker-compose
+
+- name: Install Docker Compose
+  become: yes
+  shell: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+
+- name: Install LazyDocker
+  become: yes
+  shell: curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+

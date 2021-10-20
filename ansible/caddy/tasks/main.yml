@@ -1,0 +1,32 @@
+---
+# tasks file for caddy
+- name: Install Caddy using a JSON config
+  roles:
+    - role: maxhoesel.caddy.caddy_server
+      become: yes
+      caddy_json_config:
+        apps:
+          http:
+            servers:
+              example:
+                listen:
+                  - ":80"
+                routes:
+                  - handle:
+                      - handler: "static_response"
+                        body: "Hello, world!"
+
+- name: Install Caddy using a Caddyfile
+  roles:
+    - role: maxhoesel.caddy.caddy_server
+      become: yes
+      vars:
+        caddy_caddyfile: |
+            localhost:80
+            respond "Hello, world!"
+- name: Copy nginx files
+  copy:
+    src: "{{ role_path }}/files/Caddyfile"
+    dest: /caddy/Caddyfile
+    mode: 0644
+  notify: Restart Caddy
