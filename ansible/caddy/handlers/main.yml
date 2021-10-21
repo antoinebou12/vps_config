@@ -1,6 +1,7 @@
 ---
 # handlers file for caddy
 - name: Restart Caddy
-  service: name=caddy
-  state=restarted  
+  service: 
+      name: caddy
+      state: restarted  
   become: yes

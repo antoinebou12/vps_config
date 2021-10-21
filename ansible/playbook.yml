@@ -5,6 +5,6 @@
   become_method: sudo
   roles:
     - common
-    - dotfiles
-    - docker
-    - caddy
+  # - dotfiles
+  # - docker
+  # - caddy
