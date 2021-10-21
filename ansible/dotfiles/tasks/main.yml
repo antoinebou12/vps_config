@@ -1,2 +1,21 @@
 ---
 # tasks file for dotfiles
+- name: Requirements are installed
+  become: yes
+  apt:
+    name:
+        - tmux
+        - vim
+        - zsh
+    update_cache: yes
+
+- name: Download Repo .dotfiles
+  git:
+    repo: "https://github.com/antoinebou13/.dotfiles"
+    dest: "~/.dotfiles"
+
+- name: Install Repo .dotfiles
+  become: yes
+  shell: bash install.sh
+  args:
+    chdir: "/home/antoine/.dotfiles"

@@ -1,2 +1,10 @@
 ---
 # vars file for wireguard
+
+wireguard_server_ip: ""
+wireguard_server_private_key: ""
+wireguard_server_tunnel_ip: "10.1.0.1/24"
+
+wireguard_client_ip: ""
+wireguard_client_public_key: ""
+wireguard_client_tunnel_ip: "10.1.0.2/32"

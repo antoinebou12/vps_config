@@ -1,2 +1,13 @@
 ---
 # defaults file for wireguard
+
+wireguard_client_ip: "localhost"
+
+# The default state of the wireguard service
+wireguard_service_enabled: "yes"
+
+# The default port WireGuard will listen if not specified otherwise.
+wireguard_port: "51820"
+
+# The default interface name that WireGuard should use if not specified otherwise.
+wireguard_interface: "wg0"
